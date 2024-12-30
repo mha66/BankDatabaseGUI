@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,41 +12,34 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.SqlClient;
 
 namespace BankDatabaseGUI
 {
     /// <summary>
-    /// Interaction logic for CreateAccountWindow.xaml
+    /// Interaction logic for UpdateAccountWindow.xaml
     /// </summary>
-    public partial class CreateAccountWindow : Window
+    public partial class UpdateAccountWindow : Window
     {
-        public CreateAccountWindow()
+        public UpdateAccountWindow()
         {
             InitializeComponent();
         }
 
-
-
-        private void InsertBtn_Click(object sender, RoutedEventArgs e)
+        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string insert = "insert into Account (AccountNum, Balance, AccTypeId, CustomerId) values('"
-                                + AccNumTxt.Text + "', " + BalanceTxt.Text + ", " + ((ComboBoxItem)AccTypeCombo.SelectedItem).Tag + ", " + ((ComboBoxItem)CustomerIdCombo.SelectedItem).Tag + ");";
-
+                string update = $"update Account set Balance={BalanceTxt.Text} where AccountNum='{AccNumTxt.Text}';";
                 con.Open();
-                SqlCommand com = new SqlCommand(insert, con);
+                SqlCommand com = new SqlCommand(update, con);
+
                 com.ExecuteNonQuery();
                 con.Close();
 
                 AccNumTxt.Clear();
                 BalanceTxt.Clear();
-                AccTypeCombo.SelectedItem = null;
-                CustomerIdCombo.SelectedItem = null;
-
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }

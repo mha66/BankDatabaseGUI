@@ -1,0 +1,16 @@
+﻿<Window x:Class="BankDatabaseGUI.SelectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankDatabaseGUI"
+        mc:Ignorable="d"
+        Title="SelectWindow" Height="450" Width="800" Closed="Window_Closed">
+    <Grid>
+        <Image Height="450" Width="800" Source="/1158647f-6de2-4616-b86a-604b0cc6589d.jpg" Stretch="UniformToFill" Margin="0,0,0,-16"/>
+        <Button x:Name="SelectAccBtn"  Content="View Accounts" HorizontalAlignment="Left" Margin="67,347,0,0" VerticalAlignment="Top" Height="53" Width="122" Click="SelectAccBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
+        <Button x:Name="SelectCardBtn"  Content="View Cards" HorizontalAlignment="Left" Margin="243,347,0,0" VerticalAlignment="Top" Height="53" Width="122" Click="SelectCardBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
+        <Button x:Name="SelectTransactBtn"  Content="View Transactions" HorizontalAlignment="Left" Margin="424,347,0,0" VerticalAlignment="Top" Height="53" Width="134" Click="SelectTransactBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
+        <Button x:Name="SelectTransferBtn"  Content="View Transfers" HorizontalAlignment="Left" Margin="617,347,0,0" VerticalAlignment="Top" Height="53" Width="122" Click="SelectTransferBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
+    </Grid>
+</Window>

@@ -15,33 +15,32 @@ using System.Windows.Shapes;
 namespace BankDatabaseGUI
 {
     /// <summary>
-    /// Interaction logic for InsertWindow.xaml
+    /// Interaction logic for SelectWindow.xaml
     /// </summary>
-    public partial class InsertWindow : Window
+    public partial class SelectWindow : Window
     {
-        public InsertWindow()
+        public SelectWindow()
         {
             InitializeComponent();
         }
 
-
-        private void CreateAccBtn_Click(object sender, RoutedEventArgs e)
+        private void SelectAccBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreateAccountWindow obj = new CreateAccountWindow();
+            SelectAccountWindow obj = new SelectAccountWindow();
             obj.Show();
         }
 
-        private void AddCardBtn_Click(object sender, RoutedEventArgs e)
+        private void SelectCardBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void MakeTransactBtn_Click(object sender, RoutedEventArgs e)
+        private void SelectTransactBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void MakeTransferBtn_Click(object sender, RoutedEventArgs e)
+        private void SelectTransferBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -21,7 +21,7 @@
             <ComboBoxItem Tag="5" Content="Retirement" />
         </ComboBox>
         <Label Content="Account Type" HorizontalAlignment="Left" Margin="34,257,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <ComboBox x:Name="CustomerIdCombo" HorizontalAlignment="Left" Margin="605,291,0,0" VerticalAlignment="Top" Width="165" FontSize="16">
+        <ComboBox x:Name="CustomerIdCombo" HorizontalAlignment="Left" Margin="605,284,0,0" VerticalAlignment="Top" Width="165" FontSize="16">
             <ComboBoxItem Tag="11" Content="Ian Purple" />
             <ComboBoxItem Tag="12" Content="Julia Cyan" />
             <ComboBoxItem Tag="13" Content="Kevin Brown" />
@@ -33,7 +33,7 @@
             <ComboBoxItem Tag="19" Content="Quincy Aluminium" />
             <ComboBoxItem Tag="20" Content="Rachel Diamond" />
         </ComboBox>
-        <Label Content="Customer Name" HorizontalAlignment="Left" Margin="601,257,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Customer Name" HorizontalAlignment="Left" Margin="601,250,0,0" VerticalAlignment="Top" FontSize="18"/>
 
     </Grid>
 </Window>

@@ -1,0 +1,15 @@
+﻿<Window x:Class="BankDatabaseGUI.DeleteAccountWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankDatabaseGUI"
+        mc:Ignorable="d"
+        Title="DeleteAccountWindow" Height="450" Width="800">
+    <Grid>
+        <Image Height="450" Width="800" Source="/1158647f-6de2-4616-b86a-604b0cc6589d.jpg" Stretch="UniformToFill" Margin="0,0,0,-16"/>
+        <Button x:Name="DeleteBtn"  Content="Delete" HorizontalAlignment="Left" Margin="377,347,0,0" VerticalAlignment="Top" Height="53" Width="122" Click="DeleteBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
+        <TextBox x:Name="AccNumTxt" HorizontalAlignment="Left" Margin="37,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="740" Height="21" FontSize="16"/>
+        <Label Content="Account Number" HorizontalAlignment="Left" Margin="37,135,0,0" VerticalAlignment="Top" FontSize="18"/>
+    </Grid>
+</Window>
