@@ -33,7 +33,8 @@ namespace BankDatabaseGUI
 
         private void AddCardBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AddCardWindow obj = new AddCardWindow();
+            obj.Show();
         }
 
         private void MakeTransactBtn_Click(object sender, RoutedEventArgs e)
