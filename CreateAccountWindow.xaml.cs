@@ -31,6 +31,13 @@ namespace BankDatabaseGUI
         {
             try
             {
+
+                if (AccNumTxt.Text.Length != 18)
+                {
+                    MessageBox.Show("Enter account number with 18 digits");
+                    e.Handled = true;
+                    return;
+                }
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
                 string insert = "insert into Account (AccountNum, Balance, AccTypeId, CustomerId) values('"
