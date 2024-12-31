@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace BankDatabaseGUI
 {
@@ -40,8 +41,8 @@ namespace BankDatabaseGUI
                 }
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string insert = "insert into Account (AccountNum, Balance, AccTypeId, CustomerId) values('"
-                                + AccNumTxt.Text + "', " + BalanceTxt.Text + ", " + ((ComboBoxItem)AccTypeCombo.SelectedItem).Tag + ", " + ((ComboBoxItem)CustomerIdCombo.SelectedItem).Tag + ");";
+                string insert = $"insert into Account (AccountNum, Balance, AccTypeId, CustomerId) values" +
+                    $"('{AccNumTxt.Text}', {BalanceTxt.Text}, {((ComboBoxItem)AccTypeCombo.SelectedItem).Tag}, {((ComboBoxItem)CustomerIdCombo.SelectedItem).Tag});";
 
                 con.Open();
                 SqlCommand com = new SqlCommand(insert, con);
@@ -52,6 +53,36 @@ namespace BankDatabaseGUI
                 BalanceTxt.Clear();
                 AccTypeCombo.SelectedItem = null;
                 CustomerIdCombo.SelectedItem = null;
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
+                string select = $"select AccTypeId, AccTypeName from AccountType order by AccTypeId;";
+                con.Open();
+                SqlCommand com = new SqlCommand(select, con);
+                SqlDataReader dr;
+                dr = com.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    AccTypeCombo.Items.Add(new ComboBoxItem() { Tag = dr[0], Content = dr[1] });
+                }
+                dr.Close();
+                select = $"select CustId, FName, LName from Customer inner join Person on PersonId=CustId";
+                com = new SqlCommand(select, con);
+                dr = com.ExecuteReader();
+                while (dr.Read())
+                {
+                    CustomerIdCombo.Items.Add(new ComboBoxItem() { Tag = dr[0], Content = dr[1] + " " + dr[2]});
+                }
+                con.Close();
 
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
