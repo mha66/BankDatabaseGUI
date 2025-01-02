@@ -1,0 +1,20 @@
+﻿<Window x:Class="BankDatabaseGUI.MakeTransferWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankDatabaseGUI"
+        mc:Ignorable="d"
+        Title="MakeTransferWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Image Height="450" Width="800" Source="/1158647f-6de2-4616-b86a-604b0cc6589d.jpg" Stretch="UniformToFill" Margin="0,0,0,-16"/>
+        <Button x:Name="InsertBtn"  Content="Insert" HorizontalAlignment="Left" Margin="374,381,0,0" VerticalAlignment="Top" Height="53" Width="122" Click="InsertBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
+        <TextBox x:Name="TransferAmountTxt" HorizontalAlignment="Center" Margin="0,252,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="740" Height="27" FontSize="16"/>
+        <Label Content="Transfer Amount" HorizontalAlignment="Left" Margin="30,218,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="SenderAccNumCombo" HorizontalAlignment="Left" Margin="54,59,0,0" VerticalAlignment="Top" Width="381" FontSize="16" Height="33"/>
+        <Label Content="Sender Account Number" HorizontalAlignment="Left" Margin="50,25,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="RecieverAccNumCombo" HorizontalAlignment="Left" Margin="56,156,0,0" VerticalAlignment="Top" Width="379" FontSize="16" Height="33"/>
+        <Label Content="Reciever Account Number" HorizontalAlignment="Left" Margin="52,122,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+    </Grid>
+</Window>

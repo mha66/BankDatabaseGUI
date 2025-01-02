@@ -39,12 +39,14 @@ namespace BankDatabaseGUI
 
         private void MakeTransactBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            MakeTransactionWindow obj = new MakeTransactionWindow();
+            obj.Show();
         }
 
         private void MakeTransferBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            MakeTransferWindow obj = new MakeTransferWindow();
+            obj.Show();
         }
 
         private void Window_Closed(object sender, EventArgs e)
