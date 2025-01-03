@@ -16,31 +16,36 @@ using System.Windows.Shapes;
 namespace BankDatabaseGUI
 {
     /// <summary>
-    /// Interaction logic for UpdateAccountWindow.xaml
+    /// Interaction logic for UpdateCardWindow.xaml
     /// </summary>
-    public partial class UpdateAccountWindow : Window
+    public partial class UpdateCardWindow : Window
     {
-        public UpdateAccountWindow()
+        public UpdateCardWindow()
         {
             InitializeComponent();
         }
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (PinTxt.Text.Length != 4)
+            {
+                MessageBox.Show("Enter pin with 4 digits");
+                e.Handled = true;
+                return;
+            }
             try
             {
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string update = $"update Account set Balance={BalanceTxt.Text} where AccountNum='{((ComboBoxItem)AccNumCombo.SelectedItem).Tag}';";
+                string update = $"update [Card] set Pin='{PinTxt.Text}' where CardNum='{((ComboBoxItem)CardNumCombo.SelectedItem).Tag}';";
                 con.Open();
                 SqlCommand com = new SqlCommand(update, con);
 
                 com.ExecuteNonQuery();
                 con.Close();
 
-                
-                BalanceTxt.Clear();
-                AccNumCombo.SelectedItem = null;
+                PinTxt.Clear();
+                CardNumCombo.SelectedItem = null;
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
@@ -51,7 +56,7 @@ namespace BankDatabaseGUI
             {
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string select = $"select AccountNum from Account;";
+                string select = $"select CardNum from [Card];";
                 con.Open();
                 SqlCommand com = new SqlCommand(select, con);
                 SqlDataReader dr;
@@ -59,7 +64,7 @@ namespace BankDatabaseGUI
 
                 while (dr.Read())
                 {
-                    AccNumCombo.Items.Add(new ComboBoxItem() { Tag = dr[0], Content = dr[0] });
+                    CardNumCombo.Items.Add(new ComboBoxItem() { Tag = dr[0], Content = dr[0] });
                 }
                 con.Close();
 

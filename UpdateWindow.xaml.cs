@@ -37,7 +37,8 @@ namespace BankDatabaseGUI
 
         private void UpdateCardBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateCardWindow obj = new UpdateCardWindow();
+            obj.Show();
         }
     }
 }
