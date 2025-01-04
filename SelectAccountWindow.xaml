@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankDatabaseGUI"
         mc:Ignorable="d"
-        Title="SelectAccountWindow" Height="450" Width="800">
+        Title="SelectAccountWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Image Height="450" Width="800" Source="/1158647f-6de2-4616-b86a-604b0cc6589d.jpg" Stretch="UniformToFill" Margin="0,0,0,-16"/>
         <Button x:Name="SelectAccBtn"  Content="View Account" HorizontalAlignment="Left" Margin="44,122,0,0" VerticalAlignment="Top" Height="53" Width="122" Click="SelectAccBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
         <Button x:Name="SelectAllAccBtn"  Content="View All Accounts" HorizontalAlignment="Left" Margin="579,127,0,0" VerticalAlignment="Top" Height="48" Width="139" Click="SelectAllAccBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
-        <TextBox x:Name="AccNumTxt" HorizontalAlignment="Left" Margin="32,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="740" Height="21" FontSize="16"/>
-        <Label Content="Account Number" HorizontalAlignment="Left" Margin="32,42,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.506,-0.682"/>
+        <Label Content="Account Number" HorizontalAlignment="Left" Margin="32,27,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.506,-0.682"/>
         <DataGrid x:Name="DataView" Margin="27,199,28,-6" />
+        <ComboBox x:Name="AccNumCombo" HorizontalAlignment="Left" Margin="32,61,0,0" VerticalAlignment="Top" Width="513" FontSize="16" Height="33"/>
     </Grid>
 </Window>

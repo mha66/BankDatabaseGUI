@@ -17,24 +17,22 @@ using System.Windows.Shapes;
 namespace BankDatabaseGUI
 {
     /// <summary>
-    /// Interaction logic for SelectAccountWindow.xaml
+    /// Interaction logic for SelectTransfersWindow.xaml
     /// </summary>
-    public partial class SelectAccountWindow : Window
+    public partial class SelectTransfersWindow : Window
     {
-        public SelectAccountWindow()
+        public SelectTransfersWindow()
         {
             InitializeComponent();
         }
 
-        private void SelectAccBtn_Click(object sender, RoutedEventArgs e)
+        private void SelectTransferBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string select = $"select AccountNum as 'Account Number', Balance, AccTypeName as 'Account Type', CustomerId " +
-                    $"from Account inner join AccountType on AccountType.AccTypeId = Account.AccTypeId " +
-                    $"where AccountNum='{((ComboBoxItem)AccNumCombo.SelectedItem).Tag}';";
+                string select = $"select * from [Transfer] where TransferId={((ComboBoxItem)TransferIdCombo.SelectedItem).Tag};";
 
                 SqlDataAdapter da = new SqlDataAdapter(select, con);
                 DataTable dt = new DataTable();
@@ -42,18 +40,16 @@ namespace BankDatabaseGUI
                 DataView.ItemsSource = dt.DefaultView;
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-
         }
 
-        private void SelectAllAccBtn_Click(object sender, RoutedEventArgs e)
+        private void SelectAllTransfersBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string select = $"select AccountNum as 'Account Number', Balance, AccTypeName as 'Account Type', CustomerId " +
-                    $"from Account inner join AccountType on AccountType.AccTypeId = Account.AccTypeId " +
-                    $"order by CustomerId asc;";
+                string select = $"select * from [Transfer];";
+
                 SqlDataAdapter da = new SqlDataAdapter(select, con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -68,7 +64,7 @@ namespace BankDatabaseGUI
             {
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string select = $"select AccountNum from Account;";
+                string select = $"select TransferId from [Transfer];";
                 con.Open();
                 SqlCommand com = new SqlCommand(select, con);
                 SqlDataReader dr;
@@ -76,7 +72,7 @@ namespace BankDatabaseGUI
 
                 while (dr.Read())
                 {
-                    AccNumCombo.Items.Add(new ComboBoxItem() { Tag = dr[0], Content = dr[0] });
+                    TransferIdCombo.Items.Add(new ComboBoxItem() { Tag = dr[0], Content = dr[0] });
                 }
                 con.Close();
 

@@ -37,7 +37,8 @@ namespace BankDatabaseGUI
 
         private void DeleteCardBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            DeleteCardWindow obj = new DeleteCardWindow();
+            obj.Show();
         }
     }
 }

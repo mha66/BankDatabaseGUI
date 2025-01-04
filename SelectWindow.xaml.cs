@@ -32,17 +32,20 @@ namespace BankDatabaseGUI
 
         private void SelectCardBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            SelectCardWindow obj = new SelectCardWindow();
+            obj.Show();
         }
 
         private void SelectTransactBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            SelectTransactionsWindow obj = new SelectTransactionsWindow();  
+            obj.Show();
         }
 
         private void SelectTransferBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            SelectTransfersWindow obj = new SelectTransfersWindow();
+            obj.Show();
         }
 
         private void Window_Closed(object sender, EventArgs e)

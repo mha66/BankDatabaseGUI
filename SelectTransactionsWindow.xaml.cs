@@ -17,49 +17,13 @@ using System.Windows.Shapes;
 namespace BankDatabaseGUI
 {
     /// <summary>
-    /// Interaction logic for SelectAccountWindow.xaml
+    /// Interaction logic for SelectTransactionsWindow.xaml
     /// </summary>
-    public partial class SelectAccountWindow : Window
+    public partial class SelectTransactionsWindow : Window
     {
-        public SelectAccountWindow()
+        public SelectTransactionsWindow()
         {
             InitializeComponent();
-        }
-
-        private void SelectAccBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string select = $"select AccountNum as 'Account Number', Balance, AccTypeName as 'Account Type', CustomerId " +
-                    $"from Account inner join AccountType on AccountType.AccTypeId = Account.AccTypeId " +
-                    $"where AccountNum='{((ComboBoxItem)AccNumCombo.SelectedItem).Tag}';";
-
-                SqlDataAdapter da = new SqlDataAdapter(select, con);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                DataView.ItemsSource = dt.DefaultView;
-            }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-
-        }
-
-        private void SelectAllAccBtn_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string select = $"select AccountNum as 'Account Number', Balance, AccTypeName as 'Account Type', CustomerId " +
-                    $"from Account inner join AccountType on AccountType.AccTypeId = Account.AccTypeId " +
-                    $"order by CustomerId asc;";
-                SqlDataAdapter da = new SqlDataAdapter(select, con);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                DataView.ItemsSource = dt.DefaultView;
-            }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -68,7 +32,7 @@ namespace BankDatabaseGUI
             {
                 SqlConnection con = new SqlConnection();
                 con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
-                string select = $"select AccountNum from Account;";
+                string select = $"select TransactId from [Transaction];";
                 con.Open();
                 SqlCommand com = new SqlCommand(select, con);
                 SqlDataReader dr;
@@ -76,10 +40,47 @@ namespace BankDatabaseGUI
 
                 while (dr.Read())
                 {
-                    AccNumCombo.Items.Add(new ComboBoxItem() { Tag = dr[0], Content = dr[0] });
+                    TransactIdCombo.Items.Add(new ComboBoxItem() { Tag = dr[0], Content = dr[0] });
                 }
                 con.Close();
 
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+        }
+
+        private void SelectTransactBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
+
+                string select = $"select TransactId, TransactTypeName as 'Transaction Type' , AccNum, WDAmount, TransactDateTime\n" +
+                    $"from [Transaction] inner join TransactionType on TransactionType.TransactTypeId = [Transaction].TransactTypeId\n" +
+                    $"where TransactId={((ComboBoxItem)TransactIdCombo.SelectedItem).Tag};";
+
+                SqlDataAdapter da = new SqlDataAdapter(select, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                DataView.ItemsSource = dt.DefaultView;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+        }
+
+        private void SelectAllTransactsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "Data Source=LAPTOP-2U7I77OE\\SQLEXPRESS;Initial Catalog=Bank;Integrated Security=True;";
+
+                string select = $"select TransactId, TransactTypeName as 'Transaction Type' , AccNum, WDAmount, TransactDateTime\n" +
+                    $"from [Transaction] inner join TransactionType on TransactionType.TransactTypeId = [Transaction].TransactTypeId;";
+
+                SqlDataAdapter da = new SqlDataAdapter(select, con);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                DataView.ItemsSource = dt.DefaultView;
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
         }
