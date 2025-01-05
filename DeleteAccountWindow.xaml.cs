@@ -38,16 +38,19 @@ namespace BankDatabaseGUI
                 SqlDataReader dr;
                 dr = com.ExecuteReader();
 
-                string cardNum = "";
-                if(dr.Read())
+                //List<string> cardNum = new List<string>();
+                // '121893791273', '12948012940812',
+                string cardNums = "";
+                while(dr.Read())
                 {
-                    cardNum = dr[0].ToString();
+                    cardNums += $"'{dr[0].ToString()}',";
                 }
+                cardNums = cardNums.Remove(cardNums.Length-1); //Remove last ","
 
                 dr.Close();
 
-                string delete = $"delete from CardATM where CardNum='{cardNum}';\n" +
-                    $"delete from [Card] where CardNum='{cardNum}';\n" +
+                string delete = $"delete from CardATM where CardNum in ({cardNums});\n" +
+                    $"delete from [Card] where CardNum in ({cardNums});\n" +
                     $"delete from [Transaction] where AccNum='{((ComboBoxItem)AccNumCombo.SelectedItem).Tag}';\n" +
                     $"delete from [Transfer] where SenderAccNum='{((ComboBoxItem)AccNumCombo.SelectedItem).Tag}' or RecieverAccNum='{((ComboBoxItem)AccNumCombo.SelectedItem).Tag}';\n" +
                     $"delete from Account where AccountNum='{((ComboBoxItem)AccNumCombo.SelectedItem).Tag}';";

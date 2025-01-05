@@ -9,7 +9,7 @@
     <Grid>
         <Image Height="450" Width="800" Source="/1158647f-6de2-4616-b86a-604b0cc6589d.jpg" Stretch="UniformToFill" Margin="0,0,0,-16"/>
         <Button x:Name="SelectCardBtn"  Content="View Card" HorizontalAlignment="Left" Margin="44,122,0,0" VerticalAlignment="Top" Height="53" Width="122" Click="SelectCardBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
-        <Button x:Name="SelectAllCardBtn"  Content="View All Card" HorizontalAlignment="Left" Margin="579,127,0,0" VerticalAlignment="Top" Height="48" Width="139" Click="SelectAllCardBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
+        <Button x:Name="SelectAllCardBtn"  Content="View All Cards" HorizontalAlignment="Left" Margin="579,127,0,0" VerticalAlignment="Top" Height="48" Width="139" Click="SelectAllCardBtn_Click" FontSize="16" RenderTransformOrigin="0.265,0.53"/>
         <Label Content="Card Number" HorizontalAlignment="Left" Margin="32,27,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="0.506,-0.682"/>
         <DataGrid x:Name="DataView" Margin="27,199,28,-6" />
         <ComboBox x:Name="CardNumCombo" HorizontalAlignment="Left" Margin="32,61,0,0" VerticalAlignment="Top" Width="513" FontSize="16" Height="33"/>
